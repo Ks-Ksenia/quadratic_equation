@@ -15,6 +15,6 @@ jobs:
         - name: Install pytest
           run: pip install pytest
         - name: Run tests
-          run: pytest tests.py
+          run: pytest quadratic_equation/tests.py
 
 
