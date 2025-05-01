@@ -69,6 +69,12 @@ class MoveWithBurnFuelCommand(ICommand):
 
 
 class ChangeVelocityCommand(ICommand):
+    def __init__(self, obj):
+        self.obj = obj
+
     @abstractmethod
     def execute(self, *args, **kwargs):
-        ...
+        velocity = self.obj.get_velocity()
+        if not velocity:
+            raise CommandException("Невозможно изменить скорость.")
+
