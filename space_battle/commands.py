@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from exceptions import CommandException
+from space_battle.exceptions import CommandException
 
 
 class ICommand(ABC):

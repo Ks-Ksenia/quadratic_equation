@@ -1,5 +1,5 @@
-from quadratic_equation.space_battle.commands import LambdaCommand
-from quadratic_equation.space_battle.exceptions import IoCResolveError
+from space_battle.commands import LambdaCommand
+from space_battle.exceptions import IoCResolveError
 
 
 def _default_ioc_resolve_strategy(dependency_name, *args, **kwargs):

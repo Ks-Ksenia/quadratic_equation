@@ -1,9 +1,9 @@
 import threading
 from contextvars import ContextVar
 
-from quadratic_equation.space_battle.commands import LambdaCommand
-from quadratic_equation.space_battle.ioc_container.ioc import IoC
-from quadratic_equation.space_battle.exceptions import IoCScopedError
+from space_battle.commands import LambdaCommand
+from space_battle.ioc_container.ioc import IoC
+from space_battle.exceptions import IoCScopedError
 
 
 class Scope:
@@ -57,7 +57,7 @@ class ScopedIoC:
     def _get_parent_scope(self):
         raise IoCScopedError("Корневая область не имеет родительского области")
 
-    def _create_scope(self, name, parent):
+    def _create_scope(self, name, parent=None):
         new_scope = Scope(name, {})
         if not parent:
             parent = self._get_current_scope()
