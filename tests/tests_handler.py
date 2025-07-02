@@ -1,11 +1,11 @@
 import logging
 
-from queue_ import q
-from repeat_cmd import RepeatHandler, RepeatCommand
-from repeat_twice_cmd import RepeatTwiceHandler, RepeatTwiceCommand
-from write_log_cmd import WriteLogHandler, RecordToLog
-from commands import MoveCommand
-from settings import log
+from space_battle.queue_ import q
+from space_battle.repeat_cmd import RepeatHandler, RepeatCommand
+from space_battle.repeat_twice_cmd import RepeatTwiceHandler, RepeatTwiceCommand
+from space_battle.write_log_cmd import WriteLogHandler, RecordToLog
+from space_battle.commands import MoveCommand
+from space_battle.settings import log
 
 log_filepath = f"./homework_2/{__name__}.log"
 log_handler = logging.FileHandler(log_filepath, mode='w')

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from exceptions import CommandException
+from space_battle.exceptions import CommandException
 
 
 class ICommand(ABC):
@@ -78,3 +78,17 @@ class ChangeVelocityCommand(ICommand):
         if not velocity:
             raise CommandException("Невозможно изменить скорость.")
 
+
+class LambdaCommand(ICommand):
+    def __init__(self, func):
+        self._func = func
+        self._args = []
+        self._kwargs = {}
+
+    def setup(self, *args, **kwargs):
+        self._args = args
+        self._kwargs = kwargs
+        return self
+
+    def execute(self):
+        self._func(*self._args, **self._kwargs)
