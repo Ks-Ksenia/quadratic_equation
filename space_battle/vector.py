@@ -27,7 +27,6 @@ class Vector:
     def __eq__(self, other):
         if not isinstance(other, Vector):
             raise NotImplementedError
-        print(other)
         return self.x == other.x and self.y == other.y
 
     def __repr__(self) -> str:
