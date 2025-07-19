@@ -15,4 +15,4 @@ jobs:
         - name: Install pytest
           run: pip install pytest
         - name: Run tests
-          run: pytest tests/tests_adapter.py
+          run: pytest tests/tests_event_loop.py
