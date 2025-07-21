@@ -1,25 +1,28 @@
 from abc import ABC, abstractmethod
+
 from space_battle.exceptions import CommandException
 
 
 class ICommand(ABC):
     @abstractmethod
     def execute(self, *args, **kwargs):
-        pass
+        ...
 
 
 class MoveCommand(ICommand):
-    @abstractmethod
+    def __init__(self, movable):
+        self._movable = movable
+
     def execute(self, *args, **kwargs):
-        ...
+        pos = self._movable.get_location()
+        velocity = self._movable.get_velocity()
+        self._movable.set_location(pos + velocity)
 
 
 class RotateCommand(ICommand):
     @abstractmethod
     def execute(self, *args, **kwargs):
-        dict_ = {}
-        dict_['key']
-
+        ...
 
 class CheckFuelCommand(ICommand):
     def __init__(self, obj):
@@ -92,3 +95,10 @@ class LambdaCommand(ICommand):
 
     def execute(self):
         self._func(*self._args, **self._kwargs)
+
+
+class EmptyCommand(ICommand):
+
+    @abstractmethod
+    def execute(self, *args, **kwargs):
+        ...

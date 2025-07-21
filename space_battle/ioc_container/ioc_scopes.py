@@ -34,6 +34,7 @@ class ScopedIoC:
                 "IoC.Scope.Parent": self._get_parent_scope,
                 "IoC.Scope.Create": self._create_scope,
                 "IoC.Scope.Register": LambdaCommand(self._register_dependency).setup,
+                "Adapter": LambdaCommand(self._register_dependency).setup,
             }
 
             self._root_scope.store.update(default_store)

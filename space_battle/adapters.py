@@ -1,27 +1,27 @@
 from abc import abstractmethod
 from math import cos, sin
+from space_battle.vector import Vector
 
-from movement import MovingObject, RotationObject, FuelObject, ChangeVelocityObject
-from vector import Vector
+from space_battle.movement import MovingObject, RotationObject, FuelObject, ChangeVelocityObject
+from space_battle.ioc_container.ioc import IoC
 
 
 class MovingObjectAdapter(MovingObject):
     def __init__(self, universal_obj):
         self.universal_obj = universal_obj
 
-    @abstractmethod
     def get_location(self):
-        return self.universal_obj.get_property("location")
+        return IoC.resolve(
+            "MovingObject.location.get",
+            self.universal_obj)
 
-    @abstractmethod
     def set_location(self, new_location):
-        self.universal_obj.set_property("location", new_location)
+        return IoC.resolve("MovingObject.location.set",
+                           self.universal_obj,
+                           new_location).execute()
 
-    @abstractmethod
     def get_velocity(self):
-        velocity = self.universal_obj.get_property("velocity")
-        location = self.universal_obj.get_property("location")
-        return Vector(velocity.x + location.x, velocity.y + location.y)
+        return IoC.resolve("MovingObject.velocity.get", self.universal_obj)
 
 
 class RotationObjectAdapter(RotationObject):
