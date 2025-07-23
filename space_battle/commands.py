@@ -5,7 +5,7 @@ from space_battle.exceptions import CommandException
 class ICommand(ABC):
     @abstractmethod
     def execute(self, *args, **kwargs):
-        pass
+        ...
 
 
 class MoveCommand(ICommand):
@@ -17,9 +17,7 @@ class MoveCommand(ICommand):
 class RotateCommand(ICommand):
     @abstractmethod
     def execute(self, *args, **kwargs):
-        dict_ = {}
-        dict_['key']
-
+        ...
 
 class CheckFuelCommand(ICommand):
     def __init__(self, obj):
