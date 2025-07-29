@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from space_battle.exceptions import CommandException
 
 
@@ -9,9 +10,13 @@ class ICommand(ABC):
 
 
 class MoveCommand(ICommand):
-    @abstractmethod
+    def __init__(self, movable):
+        self._movable = movable
+
     def execute(self, *args, **kwargs):
-        ...
+        pos = self._movable.get_location()
+        velocity = self._movable.get_velocity()
+        self._movable.set_location(pos + velocity)
 
 
 class RotateCommand(ICommand):

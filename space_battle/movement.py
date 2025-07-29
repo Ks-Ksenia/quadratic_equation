@@ -55,3 +55,7 @@ class ChangeVelocityObject(MovingObject, RotationObject):
     @abstractmethod
     def set_velocity(self, value):
         ...
+
+
+class NewMovingObject(MovingObject):
+    ...

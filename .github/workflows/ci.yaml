@@ -15,4 +15,4 @@ jobs:
         - name: Install pytest
           run: pip install pytest
         - name: Run tests
-          run: pytest tests/tests_ioc.py
+          run: pytest tests/tests_adapter.py
